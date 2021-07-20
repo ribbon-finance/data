@@ -1,0 +1,4 @@
+Tools for gathering staking data and calculating RBN distribution of extra tokens.
+
+Run `node scanner.js` first, which scrapes all `Staked` events from the 3 staking contracts. 
+Then, run `python scannerEarned.py` to get specific user RBN balances and disperse payload.

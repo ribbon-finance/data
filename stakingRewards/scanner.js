@@ -1,3 +1,7 @@
+// Web3.py doesn't support interface for easily getting historic events as 
+// far as I saw, so just did it real quick in Web3js instead. Stores user
+// address in ./output for the python script which does the actual work.
+
 const Web3 = require("web3");
 const PROVIDER_URL = "https://eth-mainnet.alchemyapi.io/v2/Hu4cG7pHmFEg47MtltDPCOTH50sbNIv4"// = your provider
 const web3 = new Web3(PROVIDER_URL)
