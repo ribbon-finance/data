@@ -11,7 +11,7 @@ stUSDC = web3.eth.contract(abi=abi, address="0xe79734461499246b6A8C8e768B96bebd0
 save_intermediate_values = True
 
 ethRewards = {} 
-with open("./ETHStakers.json") as f:
+with open("./output/ETHStakers.json") as f:
     data = json.loads(f.read())
 for datum in tqdm(data):
     if datum['user'].lower() in ethRewards:
@@ -19,11 +19,11 @@ for datum in tqdm(data):
     reward = stETH.functions.earned(datum['user']).call({}, block_identifier=12850000)
     ethRewards[datum['user'].lower()] = reward
 if save_intermediate_values:
-    with open("./stETHRewards.json", "w+") as f:
+    with open("./output/stETHRewards.json", "w+") as f:
         f.write(json.dumps(ethRewards))
 
 wbtcRewards = {} 
-with open("./WBTCStakers.json") as f:
+with open("./output/WBTCStakers.json") as f:
     data = json.loads(f.read())
 for datum in tqdm(data):
     if datum['user'].lower() in wbtcRewards:
@@ -31,11 +31,11 @@ for datum in tqdm(data):
     reward = stWBTC.functions.earned(datum['user']).call({}, block_identifier=12850000)
     wbtcRewards[datum['user'].lower()] = reward
 if save_intermediate_values:
-    with open("./stWBTCRewards.json", "w+") as f:
+    with open("./output/stWBTCRewards.json", "w+") as f:
         f.write(json.dumps(wbtcRewards))
 
 usdcRewards = {} 
-with open("./USDCStakers.json") as f:
+with open("./output/USDCStakers.json") as f:
     data = json.loads(f.read())
 for datum in tqdm(data):
     if datum['user'].lower() in usdcRewards:
@@ -43,7 +43,7 @@ for datum in tqdm(data):
     reward = stUSDC.functions.earned(datum['user']).call({}, block_identifier=12850000)
     usdcRewards[datum['user'].lower()] = reward
 if save_intermediate_values:
-    with open("./stUSDCRewards.json", "w+") as f:
+    with open("./output/stUSDCRewards.json", "w+") as f:
         f.write(json.dumps(usdcRewards))
 
 ETH_RBN_allocation = 3071165 * 10**18
@@ -96,9 +96,10 @@ data = {
     "USDC Rewards": usdcRewards,
 }
 
-with open("./rewardSummary.json", 'w+') as f:
-    f.write(json.dumps(data))
+if save_intermediate_values:
+    with open("./output/rewardSummary.json", 'w+') as f:
+        f.write(json.dumps(data))
 
-with open("./disperse_payouts.json", 'w+') as f:
+with open("./output/disperse_payouts.json", 'w+') as f:
     f.write(json.dumps(disperse_payouts))
 

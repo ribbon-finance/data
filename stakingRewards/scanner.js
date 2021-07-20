@@ -24,7 +24,7 @@ stETH.getPastEvents('Staked', {
     })
   })
   require('fs').writeFile(
-    './ETHStakers.json',
+    './output/ETHStakers.json',
     JSON.stringify(stETHUsers),
     function (err) {
       if (err) {
@@ -46,7 +46,7 @@ stWBTC.getPastEvents('Staked', {
     })
   })
   require('fs').writeFile(
-    './WBTCStakers.json',
+    './output/WBTCStakers.json',
     JSON.stringify(stWBTCUsers),
     function (err) {
       if (err) {
@@ -68,7 +68,7 @@ stUSDC.getPastEvents('Staked', {
     })
   })
   require('fs').writeFile(
-    './USDCStakers.json',
+    './output/USDCStakers.json',
     JSON.stringify(stUSDCUsers),
     function (err) {
       if (err) {
