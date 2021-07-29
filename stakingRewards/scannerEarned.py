@@ -63,10 +63,10 @@ ETHleftoverRBN  = (ETH_RBN_allocation - ethTotalRewards) / 10**18
 WBTCleftoverRBN = (WBTC_RBN_allocation - wbtcTotalRewards) / 10**18
 USDCleftoverRBN = (USDC_RBN_allocation - usdcTotalRewards) / 10**18
 
-print(f"Total RBN: {totalRBN / 10**18}")
-print(f"ETH RBN remaining: {ETHleftoverRBN}")
-print(f"WBTC RBN remaining: {WBTCleftoverRBN}")
-print(f"USDC RBN remaining: {USDCleftoverRBN}")
+print(f"RBN earned by stakers: {totalRBN / 10**18}")
+print(f"ETH vault RBN forfeited: {ETHleftoverRBN}")
+print(f"WBTC vault RBN forfeited: {WBTCleftoverRBN}")
+print(f"USDC vault RBN forfeited: {USDCleftoverRBN}")
 
 disperse_payouts = {}
 vault_bonuses = [ 
@@ -75,9 +75,9 @@ vault_bonuses = [
     USDCleftoverRBN / (USDC_RBN_allocation / 10**18),
 ]
 
-print(f"ETH bonus: {vault_bonuses[0]}")
-print(f"WBTC bonus: {vault_bonuses[1]}")
-print(f"USDC bonus: {vault_bonuses[2]}")
+print(f"ETH extra RBN per earned RBN: {vault_bonuses[0]}")
+print(f"WBTC extra RBN per earned RBN: {vault_bonuses[1]}")
+print(f"USDC extra RBN per earned RBN: {vault_bonuses[2]}")
 
 for vault, bonus in zip([ethRewards, wbtcRewards, usdcRewards], vault_bonuses):
     for account, reward_amount in vault.items():
